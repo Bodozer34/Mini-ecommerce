@@ -14,6 +14,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import CustomBadge from "./CustomBadge";
 
 interface Props {
   /**
@@ -93,6 +94,7 @@ export default function CustomAppBar(props: Props) {
               </Button>
             ))}
           </Box>
+          <CustomBadge />
         </Toolbar>
       </AppBar>
       <nav>
