@@ -12,7 +12,6 @@ import {
 import AddtoCart from "../AddtoCart";
 import { Product } from "@/types/general-types";
 
-
 interface ProductProps {
   product: Product;
 }
@@ -33,7 +32,7 @@ function ProductCard({ product }: ProductProps) {
             {product.title}
           </Typography>
           <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-            {product.description.substring(0, 60)}...
+            {product.description.substring(0, 40)}...
           </Typography>
           <Box
             sx={{
@@ -42,7 +41,7 @@ function ProductCard({ product }: ProductProps) {
               alignItems: "center",
             }}
           >
-            <Typography variant="h6" color="primary">
+            <Typography variant="body1" color="primary">
               ${product.price}
             </Typography>
             <AddtoCart product={product} />

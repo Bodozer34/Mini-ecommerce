@@ -1,8 +1,10 @@
+"use client"
+import CartPage from '@/components/CartPage'
 import React from 'react'
 
 function Cart() {
   return (
-    <div>Cart</div>
+   <CartPage/>
   )
 }
 

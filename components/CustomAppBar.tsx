@@ -15,6 +15,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import CustomBadge from "./CustomBadge";
+import Link from "next/link";
 
 interface Props {
   /**
@@ -25,7 +26,11 @@ interface Props {
 }
 
 const drawerWidth = 240;
-const navItems = ["Home", "About", "Contact"];
+const navItems = [
+  { label: "HOME", path: "/" },
+  { label: "ABOUT", path: "/about" },
+  { label: "CONTACT", path: "/contact" },
+];
 
 export default function CustomAppBar(props: Props) {
   const { window } = props;
@@ -43,11 +48,13 @@ export default function CustomAppBar(props: Props) {
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item} />
-            </ListItemButton>
-          </ListItem>
+          <Link
+            key={item.label}
+            href={item.path}
+            style={{ textDecoration: "none" }}
+          >
+            <Button sx={{ color: "#222" }}>{item.label}</Button>
+          </Link>
         ))}
       </List>
     </Box>
@@ -61,7 +68,6 @@ export default function CustomAppBar(props: Props) {
       <CssBaseline />
       <AppBar
         component="nav"
-       
         sx={{
           backgroundColor: "rgba(255, 255, 255, 0.8)",
           backdropFilter: "blur(10px)", // Glass effect
@@ -83,15 +89,21 @@ export default function CustomAppBar(props: Props) {
           <Typography
             variant="h6"
             component="div"
-            sx={{ color:"#27a5dc", flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            sx={{
+              color: "#27a5dc",
+              flexGrow: 1,
+              display: { xs: "none", sm: "block" },
+            }}
           >
             MUI
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: "#27a5dc" }}>
-                {item}
-              </Button>
+              <Link href={item.path}>
+                <Button key={item.label} sx={{ color: "#27a5dc" }}>
+                  {item.label}
+                </Button>
+              </Link>
             ))}
           </Box>
           <CustomBadge />
